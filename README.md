@@ -76,14 +76,14 @@ Pituitary   99.53%
 
 ### 🖥️ Application Preview
 
-![NeuroScanAI Result](screenshots/output.png)
+![NeuroScanAI Dashboard](screenshots/dashboard.png)
 
 ## 🚀 Getting Started
 
 ### 1. Clone the repository
 
 ```bash
-git clone <YOUR_GITHUB_REPOSITORY_URL>
+git clone <GITHUB_REPOSITORY_URL>
 cd <repo>
 ```
 
