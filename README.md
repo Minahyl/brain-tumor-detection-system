@@ -64,7 +64,7 @@ Interactive Dashboard
 
 ## 📊 Example Result
 
-After uploading an MRI scan, the application displays the predicted tumor category, confidence score, class probabilities, and available Grad-CAM visualization.
+After uploading an MRI scan, the application displays the predicted tumor category, confidence score, class probabilities, and Grad-CAM visualization.
 
 Example output:
 
@@ -82,8 +82,19 @@ Pituitary   99.53%
 
 ## 🖥️ Application Preview
 
+### 1. NeuroScanAI Dashboard
+
 ![NeuroScanAI Dashboard](screenshots/dashboard.png)
-(screenshots/dashboard2.png)
+
+### 2. Updated Dashboard Interface
+
+![NeuroScanAI Updated Dashboard](screenshots/dashboard2.png)
+
+### 3. Grad-CAM Heatmap Visualization
+
+This visualization demonstrates how Grad-CAM highlights regions of an original brain MRI image that contribute to the model's prediction. The highlighted areas provide a visual explanation of the model's behavior and should not be interpreted as a clinically validated tumor boundary.
+
+![NeuroScanAI Grad-CAM Heatmap](screenshots/Heatmap.png)
 
 ## 🚀 Getting Started
 
@@ -154,8 +165,7 @@ http://localhost:3000
 brain-tumor-detection/
 ├── backend/
 │   ├── main.py
-│   ├── gradcam.py
-│   └── main_backup.py
+│   └── gradcam.py
 ├── frontend/
 │   ├── app/
 │   └── components/
@@ -164,7 +174,9 @@ brain-tumor-detection/
 ├── notebooks/
 ├── outputs/
 ├── screenshots/
-│   └── dashboard.png
+│   ├── dashboard.png
+│   ├── dashboard2.png
+│   └── Heatmap.png
 ├── src/
 ├── requirements.txt
 └── README.md
