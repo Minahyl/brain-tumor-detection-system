@@ -1,8 +1,8 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# dependencies
+# ================================
+# Node.js dependencies
+# ================================
 node_modules/
-/.pnp
+.pnp
 .pnp.*
 .yarn/*
 !.yarn/patches
@@ -10,57 +10,77 @@ node_modules/
 !.yarn/releases
 !.yarn/versions
 
-# testing
-/coverage
+# ================================
+# Next.js
+# ================================
+.next/
+out/
+build/
+.vercel/
 
-# next.js
-/.next/
-/out/
+# ================================
+# Testing and coverage
+# ================================
+coverage/
 
-# production
-/build
-
-# misc
-.DS_Store
+# ================================
+# Environment variables and secrets
+# ================================
+.env
+.env.*
+!.env.example
 *.pem
 
-# debug
+# ================================
+# Logs and debug files
+# ================================
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
+*.log
 
-# env files (can opt-in for committing if needed)
-.env*
-
-# vercel
-.vercel
-
-# typescript
+# ================================
+# TypeScript
+# ================================
 *.tsbuildinfo
 next-env.d.ts
+
+# ================================
+# Operating system
+# ================================
+.DS_Store
+Thumbs.db
+desktop.ini
 
 # ================================
 # Python
 # ================================
 __pycache__/
 *.py[cod]
-*.pyo
+*$py.class
 
-# Virtual environments
+# Python virtual environments
 venv/
 .venv/
 env/
 
+# Python caches and testing
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
 # ================================
-# Dataset
+# Dataset files
 # ================================
 dataset/
 datasets/
 data/
 
 # ================================
-# Machine Learning files
+# Large ML model files
 # ================================
 *.h5
 *.hdf5
@@ -68,26 +88,34 @@ data/
 *.pkl
 *.pickle
 *.joblib
+*.onnx
+*.pb
 
-# Training outputs
+# TensorFlow checkpoints
 checkpoints/
+*.index
+*.data-*
+
+# ================================
+# Training and experiment outputs
+# ================================
 runs/
 logs/
 
 # ================================
-# Uploaded / temporary files
+# Temporary uploads and files
 # ================================
 uploads/
 temp/
 tmp/
 
 # ================================
-# Jupyter
+# Generated prediction outputs
 # ================================
-.ipynb_checkpoints/
+# Ignore generated outputs only if they are not required project assets.
+# outputs/
 
 # ================================
-# Python environment / cache
+# Jupyter Notebook
 # ================================
-.pytest_cache/
-.mypy_cache/
+.ipynb_checkpoints/

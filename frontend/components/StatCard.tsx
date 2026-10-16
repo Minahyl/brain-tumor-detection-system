@@ -1,167 +1,89 @@
 "use client";
 
-
 export default function StatCard({
-title,
-value,
-status,
-color="blue"
-}:any){
-
-
-
-const styles:any={
-
-
-blue:{
-border:"border-blue-500/40",
-icon:"bg-blue-500/20",
-status:"text-blue-400"
-},
-
-
-green:{
-border:"border-emerald-500/40",
-icon:"bg-emerald-500/20",
-status:"text-emerald-400"
-},
-
-
-orange:{
-border:"border-orange-500/40",
-icon:"bg-orange-500/20",
-status:"text-orange-400"
-},
-
-
-purple:{
-border:"border-purple-500/40",
-icon:"bg-purple-500/20",
-status:"text-purple-400"
-}
-
-
-};
-
-
-
-
-const currentStyle =
-styles[color] || styles.blue;
-
-
-
-
-return (
-
-<div
-
-className={`
-bg-[#111827]
-border
-${currentStyle.border}
-rounded-2xl
-p-6
-transition
-duration-300
-hover:scale-[1.02]
-shadow-lg
-`}
-
->
-
-
-
-<div className="
-flex
-justify-between
-items-start
-">
-
-
-<div>
-
-
-<p className="
-text-gray-400
-text-sm
-">
-
-{title}
-
-</p>
-
-
-
-
-<h2 className="
-text-3xl
-font-bold
-mt-3
-text-white
-">
-
-{value}
-
-</h2>
-
-
-
-
-<p className={`
-mt-2
-text-sm
-${currentStyle.status}
-`}>
-
-{status}
-
-</p>
-
-
-</div>
-
-
-
-
-
-<div
-
-className={`
-w-12
-h-12
-rounded-xl
-${currentStyle.icon}
-flex
-items-center
-justify-center
-`}
-
->
-
-
-<div className="
-w-3
-h-3
-rounded-full
-bg-current
-">
-
-</div>
-
-
-</div>
-
-
-
-
-
-</div>
-
-
-</div>
-
-
-)
-
+  title,
+  value,
+  status,
+  color = "blue",
+}: any) {
+  const styles: any = {
+    blue: {
+      border: "border-blue-500/40",
+      icon: "bg-blue-500/15 text-blue-500",
+      status: "text-blue-500",
+    },
+
+    green: {
+      border: "border-emerald-500/40",
+      icon: "bg-emerald-500/15 text-emerald-500",
+      status: "text-emerald-500",
+    },
+
+    orange: {
+      border: "border-orange-500/40",
+      icon: "bg-orange-500/15 text-orange-500",
+      status: "text-orange-500",
+    },
+
+    purple: {
+      border: "border-purple-500/40",
+      icon: "bg-purple-500/15 text-purple-500",
+      status: "text-purple-500",
+    },
+  };
+
+  const currentStyle = styles[color] || styles.blue;
+
+  return (
+    <div
+      className={`
+        theme-panel
+        border
+        ${currentStyle.border}
+        rounded-2xl
+        p-6
+        transition-all
+        duration-300
+        hover:-translate-y-1
+        hover:shadow-lg
+      `}
+    >
+      <div className="flex items-start justify-between gap-4">
+        <div className="min-w-0">
+          <p className="text-sm theme-muted">
+            {title}
+          </p>
+
+          <h2 className="mt-3 break-words text-3xl font-bold theme-text">
+            {value}
+          </h2>
+
+          <p
+            className={`
+              mt-2
+              text-sm
+              ${currentStyle.status}
+            `}
+          >
+            {status}
+          </p>
+        </div>
+
+        <div
+          className={`
+            flex
+            h-12
+            w-12
+            shrink-0
+            items-center
+            justify-center
+            rounded-xl
+            ${currentStyle.icon}
+          `}
+        >
+          <div className="h-3 w-3 rounded-full bg-current" />
+        </div>
+      </div>
+    </div>
+  );
 }

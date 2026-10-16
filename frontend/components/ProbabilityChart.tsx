@@ -1,132 +1,138 @@
 "use client";
 
 import {
-PieChart,
-Pie,
-Cell,
-Tooltip,
-BarChart,
-Bar,
-XAxis,
-YAxis
+  PieChart,
+  Pie,
+  Cell,
+  Tooltip,
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  ResponsiveContainer,
 } from "recharts";
 
+export default function ProbabilityChart({ data }: any) {
+  const chartData = Object.keys(data ?? {}).map((key) => ({
+    name: key,
+    value: Number(data[key]) || 0,
+  }));
 
-export default function ProbabilityChart(
-{
-data
-}:any
-){
+  const colors = [
+    "#06b6d4",
+    "#8b5cf6",
+    "#22c55e",
+    "#ef4444",
+  ];
 
+  return (
+    <div className="grid gap-6 md:grid-cols-2">
+      {/* Probability Distribution */}
+      <div className="card min-w-0 p-5">
+        <h2 className="mb-4 font-semibold theme-text">
+          Probability Distribution
+        </h2>
 
-const chartData =
-Object.keys(data).map(
-(key)=>({
-name:key,
-value:data[key]
-})
-);
+        <div className="h-[300px] w-full">
+          <ResponsiveContainer width="100%" height="100%">
+            <PieChart>
+              <Pie
+                data={chartData}
+                dataKey="value"
+                nameKey="name"
+                cx="50%"
+                cy="50%"
+                outerRadius={100}
+              >
+                {chartData.map((_, index) => (
+                  <Cell
+                    key={index}
+                    fill={colors[index % colors.length]}
+                  />
+                ))}
+              </Pie>
 
+              <Tooltip
+                contentStyle={{
+                  backgroundColor: "var(--panel-bg)",
+                  border: "1px solid var(--border-color)",
+                  borderRadius: "12px",
+                  color: "var(--text-main)",
+                }}
+                itemStyle={{
+                  color: "var(--text-main)",
+                }}
+                labelStyle={{
+                  color: "var(--text-main)",
+                }}
+              />
+            </PieChart>
+          </ResponsiveContainer>
+        </div>
+      </div>
 
-const colors=[
-"#06b6d4",
-"#8b5cf6",
-"#22c55e",
-"#ef4444"
-];
+      {/* Class Probability */}
+      <div className="card min-w-0 p-5">
+        <h2 className="mb-4 font-semibold theme-text">
+          Class Probability
+        </h2>
 
+        <div className="h-[300px] w-full">
+          <ResponsiveContainer width="100%" height="100%">
+            <BarChart
+              data={chartData}
+              margin={{
+                top: 10,
+                right: 10,
+                left: 0,
+                bottom: 10,
+              }}
+            >
+              <XAxis
+                dataKey="name"
+                tick={{
+                  fill: "var(--text-muted)",
+                  fontSize: 12,
+                }}
+                axisLine={{
+                  stroke: "var(--border-color)",
+                }}
+                tickLine={false}
+              />
 
-return (
+              <YAxis
+                tick={{
+                  fill: "var(--text-muted)",
+                  fontSize: 12,
+                }}
+                axisLine={false}
+                tickLine={false}
+              />
 
-<div className="grid md:grid-cols-2 gap-6">
+              <Tooltip
+                contentStyle={{
+                  backgroundColor: "var(--panel-bg)",
+                  border: "1px solid var(--border-color)",
+                  borderRadius: "12px",
+                  color: "var(--text-main)",
+                }}
+                itemStyle={{
+                  color: "var(--text-main)",
+                }}
+                labelStyle={{
+                  color: "var(--text-main)",
+                }}
+              />
 
-
-<div className="bg-[#111827] rounded-3xl p-5">
-
-<h2 className="mb-4">
-Probability Distribution
-</h2>
-
-
-<PieChart width={300} height={300}>
-
-<Pie
-
-data={chartData}
-
-dataKey="value"
-
-nameKey="name"
-
-cx="50%"
-
-cy="50%"
-
-outerRadius={100}
-
->
-
-{
-chartData.map(
-(_,index)=>(
-
-<Cell
-key={index}
-fill={colors[index]}
-/>
-
-)
-)
-}
-
-</Pie>
-
-
-<Tooltip/>
-
-</PieChart>
-
-
-</div>
-
-
-
-<div className="bg-[#111827] rounded-3xl p-5">
-
-
-<h2 className="mb-4">
-Class Probability
-</h2>
-
-
-<BarChart
-width={350}
-height={300}
-data={chartData}
->
-
-
-<XAxis dataKey="name"/>
-
-<YAxis/>
-
-<Tooltip/>
-
-
-<Bar
-dataKey="value"
-fill="#06b6d4"
-/>
-
-
-</BarChart>
-
-
-</div>
-
-
-</div>
-
-)
-
+              <Bar
+                dataKey="value"
+                fill="#06b6d4"
+                radius={[6, 6, 0, 0]}
+              />
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
+      </div>
+    </div>
+  );
 }

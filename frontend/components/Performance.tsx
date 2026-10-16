@@ -1,52 +1,29 @@
-export default function Performance(){
+"use client";
 
-return (
+const performanceData = [
+  ["Accuracy", "83.18%"],
+  ["Model", "EfficientNetB0"],
+  ["Classes", "4"],
+  ["Framework", "TensorFlow"],
+];
 
-<div className="
-grid
-md:grid-cols-4
-gap-5
-">
+export default function Performance() {
+  return (
+    <div className="grid gap-5 sm:grid-cols-2 md:grid-cols-4">
+      {performanceData.map((item) => (
+        <div
+          key={item[0]}
+          className="card p-6"
+        >
+          <p className="text-sm theme-muted">
+            {item[0]}
+          </p>
 
-
-{
-[
-["Accuracy","83.18%"],
-["Model","EfficientNetB0"],
-["Classes","4"],
-["Framework","TensorFlow"]
-
-].map(
-(item)=>
-
-
-<div
-key={item[0]}
-className="
-bg-[#111827]
-p-6
-rounded-2xl
-"
->
-
-<p className="text-gray-400">
-{item[0]}
-</p>
-
-<h2 className="text-xl font-bold mt-2">
-{item[1]}
-</h2>
-
-
-</div>
-
-)
-}
-
-
-
-</div>
-
-)
-
+          <h2 className="mt-2 break-words text-xl font-bold theme-text">
+            {item[1]}
+          </h2>
+        </div>
+      ))}
+    </div>
+  );
 }
